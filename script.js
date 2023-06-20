@@ -5,14 +5,17 @@ var data = JSON.stringify({
   collection: "Plants",
   database: "Gardening",
   dataSource: "MASHEDcluster",
-  projection: {
-    _id: "648b0e8d90ba4ea3aeda46ba",
-  },
+  // This specifies what data/fields we want to get back from the database
+  // projection: {
+  //   _id: 1,
+  //   name: 1,
+  //   colour: 1,
+  // },
 });
 
 var config = {
   method: "post",
-  url: "https://eu-west-2.aws.data.mongodb-api.com/app/data-cvwbq/endpoint/data/v1/action/findOne",
+  url: "https://eu-west-2.aws.data.mongodb-api.com/app/data-cvwbq/endpoint/data/v1/action/find",
   headers: {
     "Content-Type": "application/json",
     "Access-Control-Request-Headers": "*",
@@ -24,7 +27,8 @@ var config = {
 
 axios(config)
   .then(function (response) {
-    console.log(JSON.stringify(response.data));
+    // console.log(JSON.stringify(response.data));
+    console.log(response.data);
   })
   .catch(function (error) {
     console.log(error);
