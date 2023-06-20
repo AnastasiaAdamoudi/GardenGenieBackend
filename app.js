@@ -6,6 +6,7 @@ const uri =
 
 import express from 'express';
 import mongoose  from 'mongoose';
+import cors from 'cors';
 
 import { MongoClient, ServerApiVersion } from 'mongodb';
 
@@ -13,7 +14,7 @@ import { MongoClient, ServerApiVersion } from 'mongodb';
 
 // Create the Express app
 const app = express();
-const port = 3000;
+const port = 5000;
 
 // Connect to MongoDB Atlas
 mongoose
@@ -27,6 +28,8 @@ mongoose
   .catch((err) => {
     console.error('Error connecting to MongoDB Atlas:', err);
   });
+
+app.use(cors())
 
 // Define the API endpoint
 app.get('/api/data', async (req, res) => {
